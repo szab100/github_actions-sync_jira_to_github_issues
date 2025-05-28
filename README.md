@@ -9,6 +9,7 @@ This GitHub Action automatically syncs **open JIRA issues** from your project in
 - 🔁 One-way sync from **JIRA → GitHub**
 - ✅ Updates GitHub issue body & labels if JIRA issue changes
 - 🏷️ Applies `synced-from-jira` and `jira-status:<status>` labels
+- 📝 Converts JIRA descriptions (ADF format) to Markdown for GitHub
 - 🧼 Handles long titles, invalid labels, and empty descriptions gracefully
 - 📅 Updates GitHub issue state based on JIRA status category
 - 📝 Maps JIRA Issue hierarchy (parent-child relationships) to GitHub Issues via labels

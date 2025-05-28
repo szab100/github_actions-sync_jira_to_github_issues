@@ -22,7 +22,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install axios
+        run: npm install axios adf-to-md
 
       - name: Run sync script
         run: node .github/scripts/sync-jira.js

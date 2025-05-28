@@ -1,4 +1,5 @@
 const axios = require('axios');
+const adf2md = require('adf-to-md');
 
 const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 const JIRA_EMAIL = process.env.JIRA_EMAIL;
@@ -28,9 +29,8 @@ function buildGithubTitle(issue) {
 
 // Construct GitHub issue body with description and relation info
 function buildGithubBody(issue) {
-  const descBlocks = issue.fields.description?.content?.map(block =>
-    block.content?.map(text => text.text).join(' ')
-  ).join('\n') || issue.fields.description || '*No description provided.*';
+  const description = issue.fields.description;
+  const descriptionMarkdown = description ? adf2md.convert(description).result : '_No description_';
 
   let relationInfo = '';
   // Epic Link field usually stored in customfield_10008 (adjust if needed)
@@ -53,7 +53,8 @@ function buildGithubBody(issue) {
 
 **Description:**
 
-${descBlocks.trim()}
+${descriptionMarkdown.trim()}
+
 ${relationInfo}
   `.trim();
 }
